@@ -22,11 +22,11 @@ DUDEW, DUDEH = 30, 30
 
 FOOD_ENERGY = 20
 FOOD_NUM = 200
-TIME_CAP = 800
+TIME_CAP = 300
 SIGHT_MAX = 10
 
 GENE_NUM = 8
-CREATURE_NUM = 200
+CREATURE_NUM = 50
 
 SHOW_BEST = True
 
@@ -311,7 +311,7 @@ def main():
     ys = np.array(bests)
     ays = np.array(avgs)
     #
-    spc_num = np.zeros((CREATURE_NUM, len(species) - 1))
+    spc_num = np.zeros((CREATURE_NUM, len(species)))
     for gen in range(len(species)):
         for sp in species[gen]:
             spc_num[sp][gen] += 1
@@ -332,3 +332,9 @@ def main():
     pygame.quit()
 
 main()
+
+#c1 = Creature(20, 20, 20, 20, WHITE, 0)
+#print(c1.brain)
+#new_data = c1.brain.mutate()
+#c2 = Creature(20, 20, 20, 20, WHITE, 0, new_data[0], new_data[1], 5)
+#print(c2.brain)

@@ -1,3 +1,4 @@
+import random
 import pygame
 import numpy as np
 
@@ -36,6 +37,7 @@ def gen_maze(size):
     pathing = True
     while(pathing):
         options = get_options(pos, maze_path)
+        move = options[random.randint(0, len(options) - 1)]
     #
     pretty_print(maze_path)
     pretty_print(maze_walls)
