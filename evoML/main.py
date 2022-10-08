@@ -319,7 +319,7 @@ def main():
     ys = np.array(bests)
     ays = np.array(avgs)
     #
-    spc_num = np.zeros((CREATURE_NUM, len(species) - 1))
+    spc_num = np.zeros((CREATURE_NUM, len(species)))
     for gen in range(len(species)):
         for sp in species[gen]:
             spc_num[sp][gen] += 1
@@ -340,3 +340,9 @@ def main():
     pygame.quit()
 
 main()
+
+#c1 = Creature(20, 20, 20, 20, WHITE, 0)
+#print(c1.brain)
+#new_data = c1.brain.mutate()
+#c2 = Creature(20, 20, 20, 20, WHITE, 0, new_data[0], new_data[1], 5)
+#print(c2.brain)

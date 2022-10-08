@@ -69,12 +69,12 @@ class Brain:
         if (random.random() > 0.5):
             new_gene_num = random.randint(0, len(new_genome) - 1)
             old_gene = new_genome[new_gene_num]
-            match random.randint(0, 2):
+            match random.randint(0, 4):
                 case 0:#input
                     new_genome[new_gene_num] = (random.randint(0, INPUT_NUM + HIDDEN_NUM - 1), old_gene[1], old_gene[2])
                 case 1:#output
                     new_genome[new_gene_num] = (old_gene[0], random.randint(INPUT_NUM, INPUT_NUM + HIDDEN_NUM + OUTPUT_NUM - 1), old_gene[2])
-                case 2:#weight
+                case 2 | 3 | 4:#weight
                     new_genome[new_gene_num] = (old_gene[0], old_gene[1], random.uniform(-1, 1))
         else:
             new_biases[random.randint(INPUT_NUM, INPUT_NUM + HIDDEN_NUM + OUTPUT_NUM - 1)] = random.uniform(-1, 1)
