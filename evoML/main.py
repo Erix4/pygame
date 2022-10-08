@@ -21,12 +21,12 @@ FOODW, FOODH = 10, 10
 DUDEW, DUDEH = 30, 30
 
 FOOD_ENERGY = 20
-FOOD_NUM = 200
-TIME_CAP = 800
+FOOD_NUM = 500
+TIME_CAP = 1000
 SIGHT_MAX = 10
 
-GENE_NUM = 8
-CREATURE_NUM = 200
+GENE_NUM = 20
+CREATURE_NUM = 500
 
 SHOW_BEST = True
 
@@ -177,7 +177,7 @@ def main():
             case 0:
                 foods = []
                 for x in range(FOOD_NUM):#create foods
-                    food = Sprite(random.randint(WIDTH / 2, WIDTH - FOODW), random.randint(0, HEIGHT - FOODH), FOODW, FOODH, WHITE)
+                    food = Sprite(random.randint(0, WIDTH - FOODW), random.randint(0, HEIGHT - FOODH), FOODW, FOODH, WHITE)
                     foods.append(food)
                 #
                 ticks = 0
@@ -202,11 +202,15 @@ def main():
                 #
                 foods = list(filter(lambda obj: not obj.tbd, foods))
                 #
-                if(ticks == int(TIME_CAP / 2)):
-                    for food in foods:
-                        food.rect.x = (food.rect.x / 2) + WIDTH / 2
+                #if(ticks == int(TIME_CAP / 2)):
+                #    for food in foods:
+                #        food.rect.x = (food.rect.x / 2) + WIDTH / 2
                 #
-                if(creatures[cr_num].energy < 0 or ticks > TIME_CAP or creatures[cr_num].rect.x < 0 or creatures[cr_num].rect.x > WIDTH):
+                if(creatures[cr_num].energy < 0 or ticks > TIME_CAP or 
+                creatures[cr_num].rect.x < 0 or 
+                creatures[cr_num].rect.x > WIDTH or
+                creatures[cr_num].rect.y < 0 or
+                creatures[cr_num].rect.y > HEIGHT):
                     #
                     sum += creatures[cr_num].score
                     if creatures[cr_num].score > high_cr: 
@@ -238,7 +242,7 @@ def main():
                 if(SHOW_BEST):
                     foods = []
                     for x in range(FOOD_NUM):#create foods
-                        food = Sprite(random.randint(WIDTH / 2, WIDTH - FOODW), random.randint(0, HEIGHT - FOODH), FOODW, FOODH, WHITE)
+                        food = Sprite(random.randint(0, WIDTH - FOODW), random.randint(0, HEIGHT - FOODH), FOODW, FOODH, WHITE)
                         #food = Sprite((x % int(sqrt(FOOD_NUM))) * (WIDTH - FOODW), int(x / int(sqrt(FOOD_NUM))) * (WIDTH - FOODW), FOODW, FOODH, WHITE)
                         foods.append(food)
                         objects.append(food)
@@ -266,14 +270,18 @@ def main():
                         food.tbd = True
                         creatures[0].energy += FOOD_ENERGY
                 #
-                if(ticks == int(TIME_CAP / 2)):
-                    for food in foods:
-                        food.rect.x  = (food.rect.x / 2) + WIDTH / 2
+                #if(ticks == int(TIME_CAP / 2)):
+                #    for food in foods:
+                #        food.rect.x  = (food.rect.x / 2) + WIDTH / 2
                 #
                 objects = list(filter(lambda obj: not obj.tbd, objects))
                 foods = list(filter(lambda obj: not obj.tbd, foods))
                 #
-                if(creatures[0].energy < 0 or ticks > TIME_CAP):
+                if(creatures[0].energy < 0 or ticks > TIME_CAP or 
+                creatures[0].rect.x < 0 or 
+                creatures[0].rect.x > WIDTH or
+                creatures[0].rect.y < 0 or
+                creatures[0].rect.y > HEIGHT):
                     mode = 4
                 #
                 draw_window(objects)

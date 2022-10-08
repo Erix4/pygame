@@ -2,7 +2,7 @@ import random
 import numpy as np
 
 INPUT_NUM = 5
-HIDDEN_NUM = 1
+HIDDEN_NUM = 4
 OUTPUT_NUM = 2
 
 class Brain:
